@@ -2,6 +2,7 @@ import React from 'react'
 import Blog from '../Blog'
 import { api_config } from '../api_config'
 import { useState } from 'react'
+import config from '../../config.json'
 
 const Featured = () => {
 
@@ -15,13 +16,12 @@ const Featured = () => {
         temperature: 0,
       };
 
-        const apiKey = ""
 
     const api_call = async() =>{ await  fetch("https://api.openai.com/v1/completions", {
     method: "post",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${apiKey}`,
+      "Authorization": `Bearer ${config.apiKey}`,
     },
     body: JSON.stringify(dataContent),
   })
