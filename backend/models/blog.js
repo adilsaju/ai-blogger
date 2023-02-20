@@ -8,15 +8,14 @@ const userSchema = new mongoose.Schema({
   text: {
     type: String,
     required: true,
-    unique: true
   },
   images: {
-    type: String,
-    required: true
+    type: [String],
   },
-  images: {
-    type: String,
-    required: true
+  date: {
+    type: Date,
+    required: true,
+    default: Date.now
   },
 });
 
