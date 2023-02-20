@@ -16,7 +16,7 @@
 //         temperature: 0,
 //       };
     
-//     const apiKey = "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"
+
 
 // const api_call = await  fetch("https://api.openai.com/v1/completions", {
 //     method: "post",
