@@ -19,7 +19,7 @@ const Featured = () => {
     const dataContent = {
     
         model: "text-davinci-003",
-        prompt: "Can you write a random mathematics numerical challenge for me for grade 8 with answers in one number after Answer :",
+        prompt: "Can you write an easy random mathematics numerical challenge for me with answers in one number after Answer :",
         max_tokens: 102,
         temperature: 1,
       };
