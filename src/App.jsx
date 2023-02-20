@@ -17,6 +17,15 @@ function App() {
 
         <div className='blogs'>
             <Blog></Blog>
+
+            <Blog></Blog>
+
+
+            <Blog></Blog>
+
+
+            <Blog></Blog>
+
         </div>
 
     </div>
