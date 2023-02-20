@@ -14,11 +14,12 @@ function App() {
   return (
     <div className="App">
         <Logo/>
-        <Navigation/>
+        <h2 className="name">ChallengeAI</h2>
+        {/* <Navigation/> */}
         <div className="blog-div">
           <Featured/>
-          <Latest/>
-          <Trending/>
+          {/* <Latest/> */}
+          {/* <Trending/> */}
         </div>
         {/* <Routes> */}
         {/* <Route path="/history" element={<Trending/>}/> */}

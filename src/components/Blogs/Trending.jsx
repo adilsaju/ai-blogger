@@ -10,7 +10,7 @@ const Trending = () => {
     const dataContent = {
     
         model: "text-davinci-003",
-        prompt: "Write an article about Brahmastra movie",
+        prompt: "Write an review of iphone 15",
         max_tokens: 102,
         temperature: 0,
       };

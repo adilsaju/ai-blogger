@@ -2,7 +2,10 @@ body{
   background-color: #eaeaea;
 }
 
-
+.name{
+  text-align: center;
+  color: #9f032f;
+}
 
 /* nav */
 ul {
@@ -13,6 +16,9 @@ ul {
   border: 1px solid #e7e7e7;
   background-color: #f3f3f3;
 }
+button{
+  font-size: large;
+}
 .logo{
   display: flex;
   justify-content: center;
@@ -20,7 +26,7 @@ ul {
   
 }
 .logo img{
-  border-radius: 40%;
+  border-radius: 20%;
 }
 
 ul {
@@ -54,15 +60,19 @@ li a.active {
 }
 
 img{
-  max-width: 10%;
+  max-width: 15%;
 }
 
 .blog-div{
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-columns: 1fr ;
   margin: 2rem;
   gap: 10px;
   text-align: center;
+}
+
+.innn{
+  font-size: larger;
 }
 
 h1{
