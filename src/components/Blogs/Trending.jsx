@@ -5,6 +5,9 @@ const Trending = () => {
     <div>
         <div className="blog">
         <h1>Trending</h1> 
+        <div className="trending">
+                
+            </div>
             </div>
     </div>
   )

@@ -5,6 +5,9 @@ const Latest = () => {
     <div>
         <div className="blog">
         <h1>Latest</h1> 
+        <div className="latest">
+                
+            </div>
         </div>
     </div>
   )
