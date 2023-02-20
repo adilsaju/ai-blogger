@@ -6,7 +6,7 @@ import config from '../../config.json'
 
 const Featured = () => {
 
-    // const [datacontent, setContent] = useState([])
+    const [content, setContent] = useState([])
 
     const dataContent = {
     
@@ -30,7 +30,7 @@ const Featured = () => {
       
     }).then((data) => {
         console.log(data);
-       
+        setContent(data.choices[0].text)
       })
 
     .catch((error) => {
@@ -46,6 +46,9 @@ const Featured = () => {
             <h1>Featured</h1> 
             <div className="featured">
                 <button onClick={api_call}>Generate</button>
+                <h4>
+                    {content}
+                </h4>
             </div>
         </div>
     </div>
