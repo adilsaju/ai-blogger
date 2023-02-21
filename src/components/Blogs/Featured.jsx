@@ -6,131 +6,89 @@ import config from '../../config.json'
 
 const Featured = () => {
 
-    const [content, setContent] = useState([])
-    const [Answer, setAnswer] = useState()
-    const [Result, setResult] = useState('-')
-    const [inputText, setInputText] = useState('');
-
-    function handleInputChange() {
-        // setInputText(parseInt(event.target.value));
-        Checkk()
-      }
-
-    const dataContent = {
-    
-        model: "text-davinci-003",
-        prompt: "Can you write an easy random mathematics numerical challenge for me with answers in one number after Answer :",
-        max_tokens: 102,
-        temperature: 1,
-      };
+  const [content, setContent] = useState([])
+  const [Answer, setAnswer] = useState()
+  const [Result, setResult] = useState('-')
+  const [inputText, setInputText] = useState('');
+  const [data1, setData1] = useState([]);
 
 
-const api_call = async() =>{ await  fetch("https://api.openai.com/v1/completions", {
-    method: "post",
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${config.apiKey}`,
-    },
-    body: JSON.stringify(dataContent),
-  })
-    .then((response) => {
-      return response.json();
-      
-    }).then((data) => {
-        console.log(data);
-        // setContent(data.choices[0].text)
-        // const supAnswer = () =>{
-            let searchString = "Answer";
-            let index = data.choices[0].text.indexOf(searchString);
-            if (index !== -1) {
-                let valueAfterSearchString2 = data.choices[0].text.substring(0,index);
-                setContent(valueAfterSearchString2)
+  function handleInputChange() {
+    // setInputText(parseInt(event.target.value));
+    Checkk()
+  }
 
-                let valueAfterSearchString = data.choices[0].text.substring(index + searchString.length + 1);
-                setAnswer(valueAfterSearchString)
-                // console.log(valueAfterSearchString); // Output: "fox jumps over the lazy dog"
-              }
-        }
-      )
+  const setStuffFirst = async () => {
+    const jumbledArray = data1.sort(() => Math.random() - 0.5);
+    setData1(jumbledArray)
+    console.log(data1);
+        setContent(data1[0].question)
+        setAnswer(data1[0].answer)
 
-    .catch((error) => {
-      console.error(error);
-    });
+  }
 
-}
+  const api_call = async () => {
 
-useEffect(() => {
-      
-    const api_call = async() =>{ await  fetch("https://api.openai.com/v1/completions", {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${config.apiKey}`,
-      },
-      body: JSON.stringify(dataContent),
-    })
-      .then((response) => {
-        return response.json();
-        
-      }).then((data) => {
-          console.log(data);
-          console.log(data);
-        // setContent(data.choices[0].text)
-        // const supAnswer = () =>{
-            let searchString = "Answer";
-            let index = data.choices[0].text.indexOf(searchString);
-            if (index !== -1) {
-                let valueAfterSearchString2 = data.choices[0].text.substring(0,index);
-                setContent(valueAfterSearchString2)
+    let d1 = await fetch("http://0.0.0.0:3000/questions");
+    let d2 = await d1.json();
+    let data = d2;
+    setData1(data);
+    // console.log(data);
+    const jumbledArray = data.sort(() => Math.random() - 0.5);
+    setData1(jumbledArray)
+    console.log(jumbledArray);
+        setContent(jumbledArray[0].question)
+        setAnswer(jumbledArray[0].answer)
 
-                let valueAfterSearchString = data.choices[0].text.substring(index + searchString.length + 1);
-                setAnswer(valueAfterSearchString)
-                // console.log(valueAfterSearchString); // Output: "fox jumps over the lazy dog"
-              }
-        })
-  
-      .catch((error) => {
-        console.error(error);
-      });
+    // await setStuffFirst();
+
+
+  }
+
+
+  useEffect(() => {
+
+
+
+
+    api_call();
+  }, []);
+
+
+  const Checkk = () => {
+    console.log("ANS: ", Answer, typeof (Answer), "Input: ", inputText, typeof (inputText))
+    if (inputText.trim() === Answer.trim()) {
+      setResult('Correct')
+
+    } else {
+      setResult('Wrong')
     }
-      api_call();
-    }, []);
 
-
-const Checkk = () =>{
-    console.log("ANS: ",Answer,typeof(Answer), "Input: " ,inputText,typeof(inputText))
-    if (inputText.trim() === Answer.trim()){
-        setResult('Correct')
-        
-    }else{
-        setResult('Wrong')
-    }
-        
-}
+  }
 
   return (
     <div>
-        <div className="blog">
-            <h1>Today's Challenge</h1> 
-            <div className="featured">
-                
-                <h2 className='ques'>
-                    {content}
-                 
-                </h2>
-                <input className='innn' name="" id="note1"  value={inputText}   onChange={e => setInputText(e.target.value)} ></input> <br />
-               <br />
-                <button onClick={handleInputChange}>Check</button>
-                <br />   
-                <h2>
-                Result :  {Result}
-                </h2>
-                <br />
-                <button onClick={api_call}>Next Challenge</button>
-                
-              
-            </div>
+      <div className="blog">
+        <h1>Today's Challenge</h1>
+        <div className="featured">
+
+          <h2 className='ques'>
+            {content}
+
+          </h2>
+          <input className='innn' name="" id="note1" value={inputText} onChange={e => setInputText(e.target.value)} ></input> <br />
+          <br />
+          <button onClick={handleInputChange}>Check</button>
+          <br />
+          <h2>
+            Result :  {Result}
+          </h2>
+          <br />
+          <button onClick={setStuffFirst}>Next Challenge</button>
+
+
         </div>
+      </div>
     </div>
   )
 }
