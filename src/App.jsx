@@ -1,7 +1,6 @@
 
 import React from "react";
 import './App.css';
-import Blog from './components/Blog'
 import Navigation from './components/Header/Navigation';
 import Logo from './components/Header/Logo';
 import Trending from './components/Blogs/Trending';

@@ -1,5 +1,4 @@
 import React from 'react'
-import Blog from '../Blog'
 import { api_config } from '../api_config'
 import { useEffect, useState } from 'react'
 import config from '../../config.json'

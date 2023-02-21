@@ -22,9 +22,9 @@ router.post('/blog', async function(req, res, next) {
     },
     body: JSON.stringify({
       model: "text-davinci-003",
-      prompt: "ad for painter",
+      prompt: "Can you write a 300 words (approx) review about a recent hollywood movie of your choice",
       max_tokens: 102,
-      temperature: 0,
+      temperature: 1,
     }),
   })
   let d2 = await d1.json()
@@ -32,7 +32,7 @@ router.post('/blog', async function(req, res, next) {
   console.log(d2['choices'][0]['text']);
   let a1 = d2['choices'][0]['text']
 
-  const blog1 = await Blog.create({title: "adil", text:  a1 });
+  const blog1 = await Blog.create({title: a1.split('\n')[0] , text:  a1 });
   blog1.save()
 
 
@@ -51,6 +51,19 @@ router.get('/questions', async function(req, res, next) {
   res.json(blog1)
   // res.json(d2['choices'][0]['text'])
 });
+
+router.get('/blogs', async function(req, res, next) {
+  //call open ai
+
+
+    //save to db
+    const blog1 = await Blog.find();
+
+
+  res.json(blog1)
+  // res.json(d2['choices'][0]['text'])
+});
+
 
 
 router.post('/question', async function(req, res, next) {
